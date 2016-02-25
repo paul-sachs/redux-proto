@@ -1,5 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import chatApp from './reducers'
+import Login from './containers/login'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+let store = createStore(chatApp)
+
+render(
+  <Provider store={store}>
+    <Login />
+  </Provider>,
+  document.getElementById('root')
+)
