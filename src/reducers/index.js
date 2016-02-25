@@ -1,22 +1,10 @@
-const root = (state={}, action) => {
-  switch (action.type) {
-    case 'CHANGE_CURRENT_USER':
-    console.log('CHANGE_USER_INPUT');
-    console.log(action);
-      return {
-        ...state,
-        currentUserId: action.userId
-      }
-    case 'CHANGE_USER_INPUT':
-      console.log('CHANGE_USER_INPUT');
-      console.log(action);
-      return {
-        ...state,
-        loginInput: action.value
-      }
-    default:
-      return state
-  }
-}
+import { combineReducers } from 'redux'
+import login from './login';
+import rooms from './rooms';
 
-export default root;
+const app = combineReducers({
+  login,
+  rooms
+})
+
+export default app;

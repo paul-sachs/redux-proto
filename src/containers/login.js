@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Login from '../components/login';
 import { changeUserInput, changeCurrentUser } from '../actions';
@@ -6,8 +5,8 @@ import { changeUserInput, changeCurrentUser } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
-    currentUserId: state.currentUserId,
-    inputValue: state.loginInput
+    currentUserId: state.login.currentUserId,
+    inputValue: state.login.loginInput
   }
 }
 

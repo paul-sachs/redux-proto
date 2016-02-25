@@ -4,12 +4,16 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import chatApp from './reducers'
 import Login from './containers/login'
+import Rooms from './containers/rooms'
 
 let store = createStore(chatApp)
 
 render(
   <Provider store={store}>
-    <Login />
+    <div>
+      <Login />
+      <Rooms />
+    </div>
   </Provider>,
   document.getElementById('root')
 )
