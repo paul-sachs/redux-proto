@@ -1,21 +1,17 @@
 import room from './room';
 
-const rooms = (state=statingRooms, action) => {
+const rooms = (state=[], action) => {
   // action = { userId, }
   switch (action.type) {
     case 'SWITCH_ROOM':
-    return state.map(r =>
-      room(r, action)
-    )
+      return state.map(r =>
+        room(r, action)
+      );
+    case 'FETCH_ROOMS_SUCCEEDED':
+      return action.rooms;
     default:
-      return state
+      return state;
   }
-}
-
-const statingRooms = [
-  {name: 'Pauls room', id: 1, users:{}},
-  {name: 'Eduardos Room ', id: 2, users:{}},
-  {name: 'Lobby', id: 0, users:{}}
-]
+};
 
 export default rooms;
