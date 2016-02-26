@@ -1,7 +1,8 @@
-export const switchRoom = (roomId) => {
+export const switchRoom = (roomId, userId) => {
   return {
     type: 'SWITCH_ROOM',
-    id: roomId
+    id: roomId,
+    userId: userId
   }
 }
 

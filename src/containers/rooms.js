@@ -5,15 +5,15 @@ import { switchRoom } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
-    rooms: state.rooms
+    rooms: state.rooms,
+    currentUserId: state.login.currentUserId
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onRoomClick: (roomId) => {
-      console.log(roomId);
-      dispatch(switchRoom())
+    onRoomClick: (roomId, userId) => {
+      dispatch(switchRoom(roomId, userId))
     }
   }
 }
