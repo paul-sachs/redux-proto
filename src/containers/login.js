@@ -1,29 +1,18 @@
 import { connect } from 'react-redux';
 import Login from '../components/login';
-import { changeUserInput, changeCurrentUser } from '../actions';
+import { login } from '../actions';
 
-
-const mapStateToProps = (state) => {
-  return {
-    currentUserId: state.login.currentUserId,
-    inputValue: state.login.loginInput
-  }
-}
+import { authWithGoogle } from '../api';
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onInputChange: (event) => {
-      dispatch(changeUserInput(event.target.value))
-    },
-    onClick: (inputValue) => {
-      dispatch(changeCurrentUser(inputValue))
+    onClick: () => {
+      dispatch(login());
     }
   }
 }
 
-const App = connect(
-  mapStateToProps,
+export default connect(
+  null,
   mapDispatchToProps
-)(Login)
-
-export default App;
+)(Login);

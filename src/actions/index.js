@@ -1,41 +1,18 @@
-export const switchRoom = (roomId, userId) => {
+export const login = () => {
   return {
-    type: 'SWITCH_ROOM',
-    id: roomId,
-    userId: userId
+    type: 'LOGIN'
   };
 };
 
-export const fetchRoomsFailed = (error) => {
+export const loginSucceeded = () => {
   return {
-    type: 'FETCH_ROOMS_FAILED',
-    error: error
+    type: 'LOGIN_SUCCEEDED'
   };
 };
 
-export const fetchRoomsSucceeded = (rooms) => {
+export const loginFailed = (reason) => {
   return {
-    type: 'FETCH_ROOMS_SUCCEEDED',
-    rooms: rooms
-  };
-};
-
-export const fetchRooms = () => {
-  return {
-    type: 'FETCH_ROOMS'
-  };
-};
-
-export const changeUserInput = (value) => {
-  return {
-    type: 'CHANGE_USER_INPUT',
-    value: value
-  };
-};
-
-export const changeCurrentUser = (userId) => {
-  return {
-    type: 'CHANGE_CURRENT_USER',
-    userId: userId
+    type: 'LOGIN_FAILED',
+    reason: reason
   };
 };
