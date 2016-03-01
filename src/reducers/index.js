@@ -1,8 +1,13 @@
-import { combineReducers } from 'redux'
-import login from './login';
+const contactInput = (state='', action) => {
+  console.log("boop3")
+  switch (action.type) {
+    case 'CONTACT_INPUT_CHANGE':
+      return action.value;
+    default:
+      return state;
+  }
+};
 
-const app = combineReducers({
-  login
-})
-
-export default app;
+export login from './login';
+export contacts from './contacts';
+export {contactInput};

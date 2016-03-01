@@ -1,6 +1,7 @@
 const login = (state={}, action) => {
+  console.log("Son of a....");
   switch (action.type) {
-    case 'LOGIN_SUCCEEDED':
+    case 'SET_LOGIN':
       return {
         authData: action.authData
       }

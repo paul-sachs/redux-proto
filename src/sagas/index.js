@@ -1,18 +1,16 @@
 import { takeLatest } from 'redux-saga';
 import { put, call } from 'redux-saga/effects';
 
-import { authWithGoogle } from '../api';
-import { login, loginFailed, loginSucceeded } from '../actions';
+import { authWithGoogle, watchContacts, get} from '../api';
+import { login, loginFailed, setLogin, getCurrentLogin } from '../actions';
 
-// an utility function: return a Promise that will resolve after 1 second
-export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-// Our worker Saga: will perform the async increment task
-function* attemptLogin(args) {
+function* attemptLogin() {
   try {
     const authData = yield authWithGoogle();
-    //const data = yield call(Api.fetchUser, action.payload.url);
-    yield put(loginSucceeded(authData));
+    console.log("Got authData"+authData);
+    yield put(setLogin(authData));
+    console.log("After...");
   } catch (error) {
     yield put(loginFailed(error));
   }
