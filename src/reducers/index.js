@@ -1,5 +1,7 @@
+import { combineReducers } from 'redux'
+import login from './login';
+import contacts from './contacts';
 const contactInput = (state='', action) => {
-  console.log("boop3")
   switch (action.type) {
     case 'CONTACT_INPUT_CHANGE':
       return action.value;
@@ -8,6 +10,8 @@ const contactInput = (state='', action) => {
   }
 };
 
-export login from './login';
-export contacts from './contacts';
-export {contactInput};
+export default combineReducers( {
+  login: login,
+  contacts: contacts,
+  contactInput: contactInput
+});

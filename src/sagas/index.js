@@ -20,3 +20,14 @@ function* attemptLogin() {
 export function* watchLogin() {
   yield* takeLatest(login().type, attemptLogin);
 }
+
+// return (dispatch, getState) => {
+//   API.watchContacts((contacts) => {
+//     dispatch(replaceContacts(contacts));
+//   });
+// };
+//
+// return (dispatch, getState) => {
+//   const authData = API.getAuth();
+//   dispatch(setLogin(authData));
+// };

@@ -32,27 +32,23 @@ export const setLogin = (authData) =>{
   };
 };
 
-// The following are a little beyond the norm due to how firebase does reads.
-
-import API from '../api';
-
 export const listenToContactChanges = () => {
-  return (dispatch, getState) => {
-    API.watchContacts((contacts) => {
-      dispatch(replaceContacts(contacts));
-    });
+  return {
+    type: 'LISTEN_TO_CONTACT_CHANGES'
   };
 };
 
+
 export const addContact = (name) => {
-  return (dispatch, getState) => {
-    API.addContact(name);
+  API.addContact(name);
+  return {
+    type: 'ADD_CONTACT',
+    name: name
   };
 };
 
 export const setAuthFromCookies = () =>{
-  return (dispatch, getState) => {
-    const authData = API.getAuth();
-    dispatch(setLogin(authData));
+  return {
+    type: 'SET_AUTH_FROM_COOKIES'
   };
 };

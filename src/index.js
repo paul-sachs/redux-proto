@@ -5,38 +5,36 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import 'babel-polyfill'
 import createSagaMiddleware from 'redux-saga'
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
-import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 // Needs to be require because we want ALL the reducers.
-const reducers = require('./reducers');
-debugger;
+import reducers from './reducers';
+
 import App from './containers/app'
 import Login from './containers/login'
 import Contacts from './containers/contacts'
 import {watchLogin} from './sagas'
 import {setAuthFromCookies} from './actions'
 
+console.log(reducers);
+debugger;
 let store = createStore(
-  combineReducers({
-    ...reducers,
-    routing: routerReducer
-  }),
+  reducers,
   compose(
     applyMiddleware(
-      createSagaMiddleware(watchLogin),
-      routerMiddleware
+      createSagaMiddleware(watchLogin)
     ),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 )
 
-store.dispatch(setAuthFromCookies());
+//store.dispatch(setAuthFromCookies());
 
-// const history = syncHistoryWithStore(browserHistory, store)
+const history = syncHistoryWithStore(browserHistory, store)
 
 render(
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Contacts}/>
       </Route>
