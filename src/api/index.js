@@ -38,7 +38,6 @@ export function createThread(username) {
 }
 
 export function createMessageInThread(message, threadId, author) {
-  debugger;
   const newMessageRef = firebaseRef.child('threads')
     .child(threadId)
     .child('messages')

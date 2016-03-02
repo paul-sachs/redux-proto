@@ -9,12 +9,15 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 // Needs to be require because we want ALL the reducers.
 const reducers = require('./reducers');
+const sagas = require('./sagas');
+
 import Login from './containers/login';
 import App from './containers/app';
 import Threads from './containers/threads';
 import Contacts from './containers/contacts';
 import Thread from './containers/thread';
-import {watchLogin, watchCreateThread, watchWatchThreads, watchSetAuthFromCookies, watchCreateMessageInThread} from './sagas';
+import {values} from 'lodash';
+
 import { watchThreads, setAuthFromCookies } from './actions';
 
 let store = createStore(
@@ -24,7 +27,7 @@ let store = createStore(
   }),
   compose(
     applyMiddleware(
-      createSagaMiddleware(watchLogin, watchCreateThread, watchWatchThreads, watchSetAuthFromCookies, watchCreateMessageInThread)
+      createSagaMiddleware(...values(sagas))
     ),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
