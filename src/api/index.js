@@ -4,16 +4,7 @@ const firebaseRef = new Firebase('https://zulu-influitive.firebaseio.com');
 const contactsRef = firebaseRef.child('contact');
 
 export function authWithGoogle() {
-  return new Promise((resolve, reject) => {
-    firebaseRef.authWithOAuthPopup('google', (error, authData) => {
-      if (error) {
-        reject(error);
-      }
-      else {
-        resolve(authData);
-      }
-    });
-  });
+  return firebaseRef.authWithOAuthPopup('google');
 }
 
 export function watchContacts(callback) {
@@ -32,7 +23,7 @@ export function getAuth() {
 export function createThread(username) {
   const threadsRef = firebaseRef.child('threads');
   var newThreadRef = threadsRef.push();
-  newThreadRef.child('participants')
+  return newThreadRef.child('participants')
     .child(username)
     .set(true);
 }
@@ -46,7 +37,8 @@ export function createMessageInThread(message, threadId, author) {
     createdAt: Firebase.ServerValue.TIMESTAMP,
     text: message,
     from: author
-  })
+  });
+  const messageId = newMessageRef.key();
 }
 
 
