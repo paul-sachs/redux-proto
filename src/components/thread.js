@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 const Thread = ({thread, onAddMessageClick, messageValue, onMessageChange}) => {
   if (!thread)
     return <div>Loading...</div>;
-  
-  let inputNode;
   
   return <div>
     <div>Thread Participants: </div>
@@ -16,7 +15,7 @@ const Thread = ({thread, onAddMessageClick, messageValue, onMessageChange}) => {
       {
         thread.messages && thread.messages.map((message, index)=>{
           return <div key={index}>
-            Time: {message.timestamp}
+            Time: {moment(message.createdAt).format('LLL')}
             Message: {message.text}
             From: {message.from}
           </div>

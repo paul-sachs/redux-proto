@@ -1,0 +1,9 @@
+{
+    "rules": {
+        "threads":{
+            "$thread_id" :{
+            ".read": "data.child('participants').child(auth.uid).exists()"
+            }
+        }
+    }
+}

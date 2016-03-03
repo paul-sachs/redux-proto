@@ -44,6 +44,7 @@
     "babel-polyfill": "^6.5.0",
     "firebase": "^2.4.1",
     "lodash": "^4.6.0",
+    "moment": "^2.11.2",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^4.4.0",
